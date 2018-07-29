@@ -5,7 +5,7 @@
 // @author      Lachlan Hunt https://github.com/lachlanhunt
 // @updateURL   https://github.com/lachlanhunt/aussie-homeloans-login-userscript/raw/master/aussie-login.user.js
 // @include     https://online.aussie.com.au/AHL*
-// @version     1.0.0
+// @version     1.0.1
 // @grant       none
 // ==/UserScript==
 
@@ -46,8 +46,8 @@
     var realPassword = txtPassword.value;
     
     txtPassword.value = "";
-    Array.from(realPassword).forEach(digit => enterNum(numPad[digit]));
+    Array.from(realPassword).forEach(digit => unsafeWindow.enterNum(numPad[digit]));
 
-    return subWith(evt.target.name, evt);
+    return unsafeWindow.subWith(evt.target.name, evt);
   }
 })();
